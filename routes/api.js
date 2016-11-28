@@ -11,11 +11,11 @@ router.get('/', function(req, res, next) {
 
 router.get('/on', function(req, res, next) {
   fs.writeFileSync('/sys/class/gpio/gpio4/value', 0);
-  fs.writeFileSync()
+  res.send('on');
 });
 
 router.get('/off', function(req, res, next) {
-  fs.writeFileSync('/sys/class/gpio/gpio4/value', 0);
+  fs.writeFileSync('/sys/class/gpio/gpio4/value', 1);
   res.send('off')
 });
 
