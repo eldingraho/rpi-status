@@ -2,16 +2,17 @@
 
 const
     spawn = require( 'child_process' ).spawn,
-    ls = spawn( 'ls', [ '-lh', '/usr' ] );
+    gpio_export = spawn( 'echo', [ '>', '4', '/sys/class/gpio/export' ] );
+   // gpio_export = spawn('echo', ['>', 'out', '/sys/class/gpio/gpio4/direction']);
 
-ls.stdout.on( 'data', data => {
+gpio_export.stdout.on( 'data', data => {
     console.log( `stdout: ${data}` );
 });
 
-ls.stderr.on( 'data', data => {
+gpio_export.stderr.on( 'data', data => {
     console.log( `stderr: ${data}` );
 });
 
-ls.on( 'close', code => {
+gpio_export.on( 'close', code => {
     console.log( `child process exited with code ${code}` );
 });
