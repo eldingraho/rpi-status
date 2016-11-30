@@ -19,5 +19,9 @@ router.get('/off', function(req, res, next) {
   res.send('off')
 });
 
+router.get('cook', function(req, res, next) {
+  res.cookie('kolacic', 'tufahija');
+});
+
 
 module.exports = router;
